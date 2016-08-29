@@ -1,11 +1,13 @@
 <?php
 	
-	 $host = 'mysql.hostinger.ru';
-	 $user = 'u106116639_root';
-	 $password = '12345678';
-	 $database = 'u106116639_root';
+	 $host = 'localhost';
+	 $user = 'root';
+	 $password = '';
+	 $database = 'IRC';
 	 $link = mysqli_connect($host, $user, $password, $database);
 
+	
+	 
 	function SendToServer($msg, $channel=false)
 	{
 		global $CNF;
@@ -70,13 +72,9 @@
 			}
 			case "!почта":
 			{
-
 				$strofm = substr($message, 12);
-
-				print($strofm);
-				
-
-
+				$sql = "INSERT INTO `IRC`.`CommandsProcessed` (`id`, `NameOfSender`, `CommandString`, `Response`, `TimeStamp`) VALUES (NULL, \'".$sender."\', \'".$strofm."\', \'".'Это будет показанно на экран стрима'."\', \'".time()."\');";
+				mysqli_query($link, $sql, MYSQLI_USE_RESULT);		
 				break;
 			}
 			case "!stop":
@@ -97,4 +95,4 @@
 		}
 	}
 	
-	
+
