@@ -10,12 +10,15 @@
 	
 	SendToServer(".color #00ff00", true);
 	
+	SendToServer("Бот запущен успешно", true);
+	
 	while(true)
 	{
 		while($data = fgets($CNF->socket))
 		{
 			flush();
 			$msg = explode(' ', $data, 4);
+			
 			if($msg[0] == "PING") {
 				SendToServer("PONG ".$msg[1]);
 			} else
