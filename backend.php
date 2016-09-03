@@ -1,10 +1,10 @@
 <?php
+	$link = mysqli_connect("localhost", "root", "", "IRC");
 	
-	 $host = 'localhost';
-	 $user = 'root';
-	 $password = '';
-	 $database = 'IRC';
-	 $link = mysqli_connect($host, $user, $password, $database);
+	if (mysqli_connect_errno()) {
+		printf("Не удалось подключиться: %s\n", mysqli_connect_error());
+	exit();
+}
 
 	
 	 
@@ -73,8 +73,13 @@
 			case "!почта":
 			{
 				$strofm = substr($message, 12);
-				$sql = "INSERT INTO `IRC`.`CommandsProcessed` (`id`, `NameOfSender`, `CommandString`, `Response`, `TimeStamp`) VALUES (NULL, \'".$sender."\', \'".$strofm."\', \'".'Это будет показанно на экран стрима'."\', \'".time()."\');";
-				mysqli_query($link, $sql, MYSQLI_USE_RESULT);		
+				$sql = "INSERT INTO CMD (`id`, `NameOfSender`, `CommandString`, `Response`, `TimeStamp`) VALUES (NULL, \'1\', \'23\', \'4\', \'5\');";
+				
+				if(mysqli_real_query($link, $sql) == TRUE){
+					print("Ура");
+				} else {
+					print "ААААААААААААААААААААААААААААААА";
+				}	
 				break;
 			}
 			case "!stop":
