@@ -75,7 +75,7 @@
 				$strofm = substr($message, 12);
 				$sql = "INSERT INTO CMD (`id`, `NameOfSender`, `CommandString`, `Response`, `TimeStamp`) VALUES (NULL, \'1\', \'23\', \'4\', \'5\');";
 				
-				if(mysqli_real_query($link, $sql) == TRUE){
+				if(mysqli_query($link, $sql) == TRUE){
 					print("Ура");
 				} else {
 					print "ААААААААААААААААААААААААААААААА";
