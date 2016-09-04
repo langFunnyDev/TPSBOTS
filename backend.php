@@ -73,7 +73,7 @@
 			case "!почта":
 			{
 				$strofm = substr($message, 12);
-				$sql = "INSERT INTO CMD (`id`, `NameOfSender`, `CommandString`, `Response`, `TimeStamp`) VALUES (NULL, \'1\', \'23\', \'4\', \'5\');";
+				$sql = "INSERT INTO `IRC`.`CMD` (`id`, `NameOfSender`, `CommandString`, `Response`, `TimeStamp`) VALUES (NULL, '1', '2', '34', '45');";
 				
 				if(mysqli_query($link, $sql) == TRUE){
 					print("Ура");
