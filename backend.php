@@ -21,7 +21,7 @@
 	
 	
 	
-	function ProcessMessage($sender, $message)
+	function ProcessMessage($sender, $message, $link)
 	{
 		
 
@@ -73,13 +73,13 @@
 			case "!почта":
 			{
 				$strofm = substr($message, 12);
-				$sql = "INSERT INTO `IRC`.`CMD` (`id`, `NameOfSender`, `CommandString`, `Response`, `TimeStamp`) VALUES (NULL, '1', '2', '34', '45');";
+				$sql = "INSERT INTO `IRC`.`CMD` (`id`, `NameOfSender`, `CommandString`, `Response`, `TimeStamp`) VALUES (NULL, \'.$sender.\', \'.$strofm.\', \'\', \'\');";
 				
-				if(mysqli_query($link, $sql) == TRUE){
-					print("Ура");
-				} else {
-					print "ААААААААААААААААААААААААААААААА";
-				}	
+				$response = mysqli_query($link, $sql);
+				
+				if($response == TRUE){
+					SendToServer("Ура товарищи", true);
+				}
 				break;
 			}
 			case "!stop":

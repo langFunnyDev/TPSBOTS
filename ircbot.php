@@ -28,7 +28,7 @@
 					$text = substr($msg[3], 1);
 					$sender = substr(explode('!', $msg[0])[0], 1);
 					//print($sender." --==-- ".$text);
-					ProcessMessage($sender, $text);
+					ProcessMessage($sender, $text, $link);
 				}
 			}
 		}
